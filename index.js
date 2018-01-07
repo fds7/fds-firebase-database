@@ -47,6 +47,16 @@ async function addTodo(title) {
   });
 }
 
+async function removeTodo(todoId) {
+  return db.ref(`/users/${auth.currentUser.uid}/todos/${todoId}`).remove();
+}
+
+async function toggleTodo(todoId) {
+  return db.ref(`/users/${auth.currentUser.uid}/todos/${todoId}`).update({
+    complete: !complete
+  });
+}
+
 async function refreshTodoList() {
   // 데이터베이스에서 현재 사용자의 할 일 목록 가져오기
   const snapshot = await db.ref(`/users/${auth.currentUser.uid}/todos`).once('value');
@@ -67,9 +77,7 @@ async function refreshTodoList() {
       todoTitleEl.classList.add('todo-list__title--complete');
     }
     todoTitleEl.addEventListener('click', async e => {
-      await db.ref(`/users/${auth.currentUser.uid}/todos/${todoId}`).update({
-        complete: !complete
-      });
+      await toggleTodo(todoId);
       return refreshTodoList();
     })
     todoEl.appendChild(todoTitleEl);
@@ -77,7 +85,7 @@ async function refreshTodoList() {
     const todoRemoveEl = document.createElement('div');
     todoRemoveEl.classList.add('todo-list__remove-button');
     todoRemoveEl.addEventListener('click', async e => {
-      await db.ref(`/users/${auth.currentUser.uid}/todos/${todoId}`).remove();
+      await removeTodo(todoId);
       return refreshTodoList();
     })
     todoEl.appendChild(todoRemoveEl);
