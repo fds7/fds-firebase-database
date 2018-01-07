@@ -1,0 +1,77 @@
+.authed .loading,
+.not-authed .loading {
+  display: none;
+}
+
+.login {
+  display: none;
+}
+
+body.not-authed .login {
+  display: block;
+}
+
+.app {
+  display: none;
+  width: 500px;
+  margin: 50px auto;
+}
+
+body.authed .app {
+  display: block;
+}
+
+.input-group {
+  display: flex;
+}
+
+.input-group__input {
+  flex-grow: 1;
+  background-color: #e9ecef;
+  padding: 1em;
+}
+
+.input-group__input:focus {
+  outline: none;
+}
+
+.input-group__add-button {
+  padding: 1em;
+  color: white;
+  font-weight: bold;
+  background-color: #339af0;
+  cursor: pointer;
+}
+
+.input-group__add-button::after {
+  display: inline;
+  content: '+';
+}
+
+.todo-list__item {
+  display: flex;
+  cursor: pointer;
+}
+
+.todo-list__title {
+  padding: 1em;
+  flex-grow: 1;
+}
+
+.todo-list__title--complete {
+  text-decoration: line-through;
+  padding: 1em;
+}
+
+.todo-list__remove-button {
+  padding: 1em;
+  color: white;
+  font-weight: bold;
+  background-color: #ff6b6b;
+  cursor: pointer;
+}
+
+.todo-list__remove-button::after {
+  display: inline;
+  content: '-';
+}

@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Firebase TODO</title>
+  <link rel="stylesheet" href="./index.css">
+</head>
+<body>
+  <div class="loading">
+    로딩중...
+  </div>
+  <div class="login">
+    <button class="login__button">로그인</button>
+  </div>
+  <div class="app">
+    <div class="input-group">
+      <div class="input-group__input" contenteditable></div>
+      <div class="input-group__add-button"></div>
+    </div>
+    <div class="todo-list"></div>
+  </div>
+
+  <script src="https://www.gstatic.com/firebasejs/4.8.1/firebase.js"></script>
+  <script>
+    // Initialize Firebase
+    var config = {
+      apiKey: "AIzaSyDgmvKaP3Qqi-ocroZiAGFhO5X7wQYT6H4",
+      authDomain: "fds-firebase-todo.firebaseapp.com",
+      databaseURL: "https://fds-firebase-todo.firebaseio.com",
+      projectId: "fds-firebase-todo",
+      storageBucket: "fds-firebase-todo.appspot.com",
+      messagingSenderId: "89774285499"
+    };
+    firebase.initializeApp(config);
+  </script>
+  <script src="./index.js"></script>
+</body>
+</html>
