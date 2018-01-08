@@ -51,9 +51,9 @@ async function removeTodo(todoId) {
   return db.ref(`/users/${auth.currentUser.uid}/todos/${todoId}`).remove();
 }
 
-async function toggleTodo(todoId) {
+async function updateTodo(todoId, complete) {
   return db.ref(`/users/${auth.currentUser.uid}/todos/${todoId}`).update({
-    complete: !complete
+    complete
   });
 }
 
@@ -77,9 +77,9 @@ async function refreshTodoList() {
       todoTitleEl.classList.add('todo-list__title--complete');
     }
     todoTitleEl.addEventListener('click', async e => {
-      await toggleTodo(todoId);
+      await updateTodo(todoId, !complete);
       return refreshTodoList();
-    })
+    });
     todoEl.appendChild(todoTitleEl);
 
     const todoRemoveEl = document.createElement('div');
